@@ -1,0 +1,3 @@
+.title {
+  @apply text-yellow-300 font-extrabold font-sans text-6xl;
+}
