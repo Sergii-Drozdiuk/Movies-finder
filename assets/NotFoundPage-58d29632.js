@@ -1,1 +1,0 @@
-import{j as e,b as o}from"./index-f0272787.js";function s(){return e.jsxs("div",{children:["Sorry, this page does not exist. Please follow this link to the",e.jsx(o,{to:"/",children:" home page"}),"."]})}export{s as default};

@@ -1,0 +1,10 @@
+import{s as y,u as L,r as s,c as D,j as e,N as u,L as j,O as k}from"./index-47fe5319.js";import{E as S,b as F}from"./Error-6336e3b5.js";const p=y(u)`
+  &:hover,
+  :focus {
+    color: orange;
+    text-decoration: underline;
+  }
+  &.active {
+    color: orange;
+  }
+`,A=()=>{var h;const f=L(),v=s.useRef(((h=f.state)==null?void 0:h.from)??"/"),[r,g]=s.useState({}),[N,o]=s.useState(!1),[b,n]=s.useState(!1),{id:c}=D();s.useEffect(()=>{const t=new AbortController;return(async()=>{try{o(!0),n(!1);const a=await F(c,t.signal);g(a),o(!1)}catch(a){a&&a.message!=="canceled"&&(o(!1),n(!0))}})(),()=>{t.abort()}},[c]);const w=s.useMemo(()=>!!Object.keys(r).length,[r]),{poster_path:d,original_title:x,vote_average:l,overview:M,genres:i,release_date:E}=r;return e.jsxs("main",{children:[e.jsx(u,{to:v.current,className:"px-3 hover:underline hover:text-orange-300",children:"Go back"}),N&&e.jsx(j,{}),b&&e.jsx(S,{textError:"Movie has not founded. Please, choose another movie"}),w&&e.jsxs(e.Fragment,{children:[e.jsxs("div",{className:"px-3 pb-3 flex",children:[e.jsxs("div",{className:"w-2/3",children:[e.jsxs("h2",{className:"text-xl py-6",children:[x," (",E.split("-")[0],")"]}),e.jsxs("p",{children:["User Score: ",e.jsxs("span",{children:[" ",l==null?void 0:l.toFixed(2)," %"]})]}),e.jsx("h3",{children:"Overview"}),e.jsx("p",{className:"text-xs pr-6",children:M}),e.jsx("h3",{children:"Genres"}),e.jsx("ul",{className:"flex gap-1",children:i==null?void 0:i.map(({id:t,name:m})=>e.jsx("li",{className:"text-xs flex",children:m},t))})]}),e.jsx("div",{className:"w-1/3",children:d&&e.jsx("img",{src:`https://image.tmdb.org/t/p/w300/${d}`,alt:`${x}`,className:"rounded-lg"})})]}),e.jsxs("div",{className:"px-3 pb-3 border-[#3f51b5] border-y-2 shadow shadow-blue-500",children:[e.jsx("h3",{className:"text-lg",children:"Additional information"}),e.jsx(p,{to:"cast",className:"mr-3",children:"Cast"}),e.jsx(p,{to:"reviews",children:"Reviews"})]})]}),e.jsx(s.Suspense,{fallback:e.jsx(j,{}),children:e.jsx(k,{})})]})};export{A as default};
