@@ -1,8 +1,20 @@
 import { useState, useRef, useEffect, useMemo, Suspense } from 'react';
 import { Outlet, NavLink, useLocation, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 import { getMovieById } from '../Api/Api';
 import { Loader } from '../components/Loader';
 import { Error } from '../components/Error';
+
+const MoreLink = styled(NavLink)`
+  &:hover,
+  :focus {
+    color: orange;
+    text-decoration: underline;
+  }
+  &.active {
+    color: orange;
+  }
+`;
 
 const MovieDetails = () => {
   const location = useLocation();
@@ -42,59 +54,63 @@ const MovieDetails = () => {
     [movieDetails]
   );
 
-  const { poster_path, original_title, vote_average, overview, genres } = movieDetails;
+  const { poster_path, original_title, vote_average, overview, genres, release_date } =
+    movieDetails;
 
   return (
-    <>
-      <NavLink to={refLocation.current} className='hover:underline'>
-        {refLocation.current ? <p>Go back</p> : <p>Go home</p>}
+    <main>
+      <NavLink to={refLocation.current} className='px-3 hover:underline hover:text-orange-300'>
+        Go back
       </NavLink>
       {load && <Loader />}
       {error && <Error textError={'Movie has not founded. Please, choose another movie'} />}
 
       {isMovieDetailsEmpty && (
-        <div className='p-3'>
-          <div>
-            {poster_path && (
-              <img
-                src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
-                alt={`${original_title}`}
-                className='m-auto rounded-lg'
-              />
-            )}
-
-            <div>
-              <h2 className='m-auto text-lg'>{original_title}</h2>
+        <>
+          <div className='px-3 pb-3 flex'>
+            <div className='w-2/3'>
+              <h2 className='text-xl py-6'>
+                {original_title} ({release_date.split('-')[0]})
+              </h2>
               <p>
                 User Score: <span> {vote_average?.toFixed(2)} %</span>
               </p>
               <h3>Overview</h3>
-              <p className='text-xs'>{overview}</p>
+              <p className='text-xs pr-6'>{overview}</p>
               <h3>Genres</h3>
-              <ul>
+              <ul className='flex gap-1'>
                 {genres?.map(({ id, name }) => (
-                  <li key={id} className='text-xs'>
-                    {' '}
+                  <li key={id} className='text-xs flex'>
                     {name}
                   </li>
                 ))}
               </ul>
             </div>
-          </div>
-          <div>
-            <p>Additional information</p>
-            <div>
-              <NavLink to={`cast`}>Cast</NavLink>
-              <NavLink to={`reviews`}>Reviews</NavLink>
+            <div className='w-1/3'>
+              {poster_path && (
+                <img
+                  src={`https://image.tmdb.org/t/p/w300/${poster_path}`}
+                  alt={`${original_title}`}
+                  className='rounded-lg'
+                />
+              )}
             </div>
           </div>
-        </div>
+          <div className='px-3 pb-3 border-[#3f51b5] border-y-2 shadow shadow-blue-500'>
+            <h3 className='text-lg'>Additional information</h3>
+
+            <MoreLink to={`cast`} className='mr-3'>
+              Cast
+            </MoreLink>
+            <MoreLink to={`reviews`}>Reviews</MoreLink>
+          </div>
+        </>
       )}
 
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-    </>
+    </main>
   );
 };
 

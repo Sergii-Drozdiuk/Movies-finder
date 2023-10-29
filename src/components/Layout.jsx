@@ -7,7 +7,7 @@ import { Loader } from './Loader';
 export const Layout = () => {
   return (
     <div>
-      <header className='flex items-center bg-[#3f51b5] px-6 py-3 text-black shadow shadow-blue-500'>
+      <header className='flex items-center justify-end bg-[#3f51b5] px-6 py-3 text-black shadow shadow-blue-500'>
         <Navigation />
       </header>
       <Suspense fallback={<Loader />}>

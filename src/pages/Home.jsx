@@ -38,7 +38,7 @@ const Home = () => {
 
   return (
     <main>
-      <h2 className='text-lg text-center pb-3'>Trending today</h2>
+      <h2 className='pt-3 text-center text-lg'>Trending today</h2>
       {load && <Loader />}
       {error && <Error errorText={'Something went wrong. Please, try reloading the page.'} />}
       {movies.length !== 0 && <MoviesList moviesList={movies} location={location} />}
