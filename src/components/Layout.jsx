@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
+import { Toaster } from 'react-hot-toast';
 import { Suspense } from 'react';
 import { Navigation } from './Navigation';
 import { Loader } from './Loader';
@@ -13,15 +13,7 @@ export const Layout = () => {
       <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
-      <ToastContainer
-        position='top-right'
-        autoClose={3000}
-        closeOnClick
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme='light'
-      />
+      <Toaster position='top-right' />
     </div>
   );
 };

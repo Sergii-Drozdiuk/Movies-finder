@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
+import { toast } from 'react-hot-toast';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
@@ -14,7 +14,7 @@ export const Search = ({ getQuery }) => {
       return;
     }
     if (prevQuery === searchQuery) {
-      toast.info('This query has done');
+      toast.error('Please change a search query');
       return;
     }
     setPrevQuery(searchQuery);
