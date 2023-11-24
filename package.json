@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://github.com/Sergii-Drozdiuk/Movies-finder",
   "scripts": {
     "d": "npm run lint && vite --open",
     "b": "vite build --base=/Movies-finder/",
