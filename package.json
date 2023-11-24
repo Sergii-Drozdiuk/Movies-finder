@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "d": "npm run lint && vite --open",
-    "b": "vite build --base=/goit-react-hw-05-movies/",
+    "b": "vite build --base=/Movies-finder/",
     "lint": "eslint src",
     "lint:fix": "eslint --fix src"
   },
